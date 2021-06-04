@@ -1,4 +1,7 @@
+import 'package:elite_107/screens/playing_screen/playing_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'components/custom_button.dart';
 
 class LandingScreen extends StatelessWidget {
   @override
@@ -53,9 +56,20 @@ class LandingScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: CustomButton(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return PlayingScreen();
+                      },
+                    ),
+                  );
+                },
                 backgroundColor: Color(0xFF5A5F87),
                 text: 'Continue',
                 textColor: Colors.white,
+                borderColor: null,
               ),
             ),
             Container(
@@ -64,6 +78,7 @@ class LandingScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: CustomButton(
+                onTap: () {},
                 backgroundColor: Colors.white,
                 borderColor: Color(0xFF5A5F87),
                 text: 'Create an account',
@@ -71,47 +86,6 @@ class LandingScreen extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  final Color backgroundColor;
-  final Color borderColor;
-  final String text;
-  final Color textColor;
-  const CustomButton({
-    Key key,
-    this.backgroundColor,
-    this.borderColor,
-    this.text,
-    this.textColor,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 64,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        border: Border.all(
-          color: borderColor ?? Colors.transparent,
-        ),
-        borderRadius: BorderRadius.all(
-          Radius.circular(30),
-        ),
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(
-            color: textColor,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
         ),
       ),
     );
